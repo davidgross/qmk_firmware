@@ -15,8 +15,6 @@
  */
 #include QMK_KEYBOARD_H
 
-rgb_config_t rgb_matrix_config;
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Keymap CUSTOM: (Base Layer) Default Layer
    *
@@ -35,12 +33,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
   [0] = LAYOUT(
-		KC_ESC,  KC_F1,   KC_F2, KC_F3,  KC_F4,  KC_F5,   KC_F6,   KC_F7, KC_F8,  KC_F9,   KC_F10, KC_F11,  KC_F12,  KC_PSCR, KC_DEL,
-		KC_GRV,  KC_1,    KC_2,  KC_3,   KC_4,   KC_5,             KC_6,   KC_7,  KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
-		KC_TAB,  KC_Q,    KC_W,  KC_E,   KC_R,   KC_T,    KC_Y,    KC_U,  KC_I,   KC_O,    KC_P,   KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME,
-		KC_CAPS, KC_A,    KC_S,  KC_D,   KC_F,   KC_G,    KC_BSPC, KC_H,  KC_J,   KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,  KC_END,
-		KC_LSFT, KC_Z,    KC_X,  KC_C,   KC_V,   KC_B,    KC_ENT,  KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP,
-		KC_LCTL, KC_LGUI, KC_LALT,       KC_SPC, MO(1), KC_LSFT, KC_SPC,        KC_RALT, MO(1),  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
+    KC_ESC,  KC_F1,   KC_F2, KC_F3,  KC_F4,  KC_F5,   KC_F6,   KC_F7, KC_F8,  KC_F9,   KC_F10, KC_F11,  KC_F12,  KC_PSCR, KC_DEL,
+    KC_GRV,  KC_1,    KC_2,  KC_3,   KC_4,   KC_5,             KC_6,   KC_7,  KC_8,    KC_9,   KC_0,    KC_MINS, KC_EQL,  KC_BSPC,
+    KC_TAB,  KC_Q,    KC_W,  KC_E,   KC_R,   KC_T,    KC_Y,    KC_U,  KC_I,   KC_O,    KC_P,   KC_LBRC, KC_RBRC, KC_BSLS, KC_HOME,
+    KC_CAPS, KC_A,    KC_S,  KC_D,   KC_F,   KC_G,    KC_BSPC, KC_H,  KC_J,   KC_K,    KC_L,   KC_SCLN, KC_QUOT, KC_ENT,  KC_END,
+    KC_LSFT, KC_Z,    KC_X,  KC_C,   KC_V,   KC_B,    KC_ENT,  KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP,
+    KC_LCTL, KC_LGUI, KC_LALT,       KC_SPC, MO(1), KC_LSFT, KC_SPC,        KC_RALT, MO(1),  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
   [1] = LAYOUT(
     RESET,     KC_TRNS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,   KC_TRNS,  KC_MPLY,  KC_TRNS,  KC_CALC,   KC_MYCM,  KC_MSEL,   KC_MAIL,   NK_TOGG,   EEP_RST,
     KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_NLCK,
@@ -50,156 +48,161 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRNS,   KC_TRNS,  KC_TRNS,            KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,            KC_TRNS,   KC_TRNS,  KC_MPLY,   KC_MPRV,   KC_VOLD,   KC_MNXT)
 };
 
-// rgb_matrix_set_color_all(250, 100, 0);
 
-const uint8_t PROGMEM layercolors[][2] = {
-  [0] = {200,155}
-};
+void set_key_red( uint8_t key) {
+  rgb_matrix_set_color( key, 250, 0, 0);
+}
 
-const uint8_t PROGMEM ledcolors[][DRIVER_LED_TOTAL][3] = {
-  [1] = {
-    {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {142,123,255}, {142,123,255}, {142,123,255}, {142,123,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}
-  }
-};
+void set_key_green( uint8_t key) {
+  rgb_matrix_set_color( key, 0, 250, 0);
+}
+
+void set_key_blue( uint8_t key) {
+  rgb_matrix_set_color( key, 0, 0, 250);
+}
+
+void set_key_yellow( uint8_t key) {
+  rgb_matrix_set_color( key, 250, 250, 0);
+}
+
+void set_key_orange( uint8_t key) {
+  rgb_matrix_set_color( key, 250, 100, 0);
+}
+
+void set_key_white( uint8_t key) {
+  rgb_matrix_set_color( key, 250, 250, 250);
+}
 
 
-void set_layer_color( uint8_t layer ) {
-  for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-    rgb_matrix_set_color( i, 250, 100, 0 );
-  }
+
+void set_rgb_colors_by_layer( uint8_t layer ) {
+  // for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
+  //   set_key_white(i);
+  // }
   // Escape (Red)
-  rgb_matrix_set_color( 0, 250, 0, 0);
+  set_key_red(0);
   // F-keys
   for(int i = 1; i <= 11; i++) {
-    rgb_matrix_set_color( i, 0, 0, 250);
+    set_key_blue(i);
   }
 
   if ( layer == 1 ) {
-    rgb_matrix_set_color(2, 0, 250, 0);
-    rgb_matrix_set_color(3, 0, 250, 0);
-    rgb_matrix_set_color(4, 250, 0, 0);
-    rgb_matrix_set_color(7, 0, 250, 0);
+    set_key_green(2);
+    set_key_green(3);
+    set_key_red(4);
+    set_key_green(7);
   }
   // F12
-  rgb_matrix_set_color( 12, 0, 250, 0);
+  set_key_green(12);
   // PRTSC
-  rgb_matrix_set_color( 13, 250, 100, 0);
+  set_key_orange(13);
   // DEL
-  rgb_matrix_set_color( 14, 250, 0, 0);
+  set_key_red(14);
 
   // letters row 1 (top)
   for(int i = 15; i <= 27; i++) {
-    rgb_matrix_set_color( i, 250, 250, 250);
+    set_key_white(i);
   }
   // BK_SP
-  rgb_matrix_set_color( 28, 250, 0, 0);
+  set_key_red(28);
   // Tab
-  rgb_matrix_set_color( 29, 250, 250, 0);
+  set_key_yellow(29);
 
   // letters row 2
   for(int i = 30; i <= 42; i++) {
-    rgb_matrix_set_color( i, 250, 250, 250);
+    set_key_white(i);
   }
 
   // home
   if ( layer == 1) {
-    rgb_matrix_set_color( 43, 250, 100, 0);
+    set_key_orange(43);
   } else {
-    rgb_matrix_set_color( 43, 250, 0, 0);
+    set_key_red(43);
   }
 
   // caps
-  rgb_matrix_set_color( 44, 250, 250, 0);
+  if (host_keyboard_led_state().caps_lock) {
+    set_key_white(44);
+  } else {
+    set_key_yellow(44);
+  }
 
   // letters row 3
   for(int i = 45; i <= 56; i++) {
-    rgb_matrix_set_color( i, 250, 250, 250);
+    set_key_white(i);
   }
 
   // center bksp
-  rgb_matrix_set_color( 50, 250, 0, 0);
+  set_key_red(50);
 
   // return/enter
-  rgb_matrix_set_color( 57, 0, 250, 0);
+  set_key_green(57);
 
   // end
   if ( layer == 1) {
-    rgb_matrix_set_color( 58, 250, 100, 0);
+    set_key_orange(58);
   } else {
-    rgb_matrix_set_color( 58, 250, 0, 0);
+    set_key_red(58);
   }
 
   // l_shft
-  rgb_matrix_set_color( 59, 250, 250, 0);
+  set_key_yellow(59);
 
   // letters row 4
   for(int i = 60; i <= 70; i++) {
-    rgb_matrix_set_color( i, 250, 250, 250);
+    set_key_white(i);
   }
 
   // return
-  rgb_matrix_set_color( 65, 0, 250, 0);
+  set_key_green(65);
 
   // r_shft
-  rgb_matrix_set_color( 71, 250, 250, 0);
+  set_key_yellow(71);
 
   // arrow key up
-  rgb_matrix_set_color( 72, 250, 0, 0);
+  set_key_red(72);
 
   // l_ctrl
-  rgb_matrix_set_color( 73, 250, 0, 0);
+  set_key_red(73);
 
   // l_meta
-  rgb_matrix_set_color( 74, 250, 250, 0);
+  set_key_yellow(74);
 
   // l_alt
-  rgb_matrix_set_color( 75, 0, 0, 250);
+  set_key_blue(75);
 
   // l_space
-  rgb_matrix_set_color( 76, 0, 250, 0);
+  set_key_green(76);
 
   // m_ctrl
-  rgb_matrix_set_color( 77, 0, 0, 250);
+  set_key_blue(77);
 
   // m_shft
-  rgb_matrix_set_color( 78, 0, 0, 250);
+  set_key_blue(78);
 
   // r_space
-  rgb_matrix_set_color( 79, 0, 250, 0);
+  set_key_green(79);
 
   // r_alt
-  rgb_matrix_set_color( 80, 0, 0, 250);
+  set_key_blue(80);
 
   // fn
-  rgb_matrix_set_color( 81, 250, 0, 0);
+  set_key_red(81);
 
   // r_ctrl
-  rgb_matrix_set_color( 82, 250, 0, 0);
+  set_key_red(82);
 
   // left-arrow
-  rgb_matrix_set_color( 83,  250, 0, 0);
+  set_key_red(83);
   // down arrow
-  rgb_matrix_set_color( 84,  250, 0, 0);
+  set_key_red(84);
   // right arrow
-  rgb_matrix_set_color( 85,  250, 0, 0);
-
+  set_key_red(85);
 }
 
 
 void rgb_matrix_indicators_user(void) {
   // set layer color to static
   uint8_t layer = biton32(layer_state);
-  set_layer_color(layer);
+  set_rgb_colors_by_layer(layer);
 }
-
-
-
-
-
-
-
-
-
-
-
-
