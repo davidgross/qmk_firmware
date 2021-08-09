@@ -76,16 +76,16 @@ void set_key_white( uint8_t key) {
 
 
 void set_rgb_colors_by_layer( uint8_t layer ) {
-  // for (int i = 0; i < DRIVER_LED_TOTAL; i++) {
-  //   set_key_white(i);
-  // }
-  // Escape (Red)
+
+  // Escape
   set_key_red(0);
+
   // F-keys
   for(int i = 1; i <= 11; i++) {
     set_key_blue(i);
   }
 
+  // second layer F-keys: media buttons (vol-, vol+, mute, play/pause)
   if ( layer == 1 ) {
     set_key_green(2);
     set_key_green(3);
