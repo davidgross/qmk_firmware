@@ -200,7 +200,6 @@ void set_rgb_colors_by_layer( uint8_t layer ) {
   set_key_red(85);
 }
 
-
 void rgb_matrix_indicators_user(void) {
   // set layer color to static
   uint8_t layer = biton32(layer_state);
