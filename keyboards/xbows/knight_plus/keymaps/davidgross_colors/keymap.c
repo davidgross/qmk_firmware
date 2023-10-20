@@ -40,8 +40,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_LSFT, KC_Z,    KC_X,  KC_C,   KC_V,   KC_B,    KC_ENT,  KC_N,  KC_M,   KC_COMM, KC_DOT, KC_SLSH, KC_RSFT, KC_UP,
     KC_LCTL, KC_LGUI, KC_LALT,       KC_SPC, MO(1), KC_LSFT, KC_SPC,        KC_RALT, MO(1),  KC_RCTL, KC_LEFT, KC_DOWN, KC_RGHT),
   [1] = LAYOUT(
-    RESET,     KC_TRNS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,   KC_TRNS,  KC_MPLY,  KC_TRNS,  KC_CALC,   KC_MYCM,  KC_MSEL,   KC_MAIL,   NK_TOGG,   EEP_RST,
-    KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_NLCK,
+    QK_BOOT,   KC_TRNS,  KC_VOLD,  KC_VOLU,  KC_MUTE,  KC_TRNS,   KC_TRNS,  KC_MPLY,  KC_TRNS,  KC_CALC,   KC_MYCM,  KC_MSEL,   KC_MAIL,   NK_TOGG,   EE_CLR,
+    KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,             KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_NUM,
     RGB_TOG,   RGB_MOD,  RGB_VAI,  RGB_HUI,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_PGUP,
     KC_TRNS,   RGB_SPD,  RGB_VAD,  RGB_SPI,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_TRNS,   KC_TRNS,   KC_PGDN,
     KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,  KC_TRNS,  KC_TRNS,   KC_TRNS,  KC_TRNS,   KC_MUTE,   KC_VOLU,
@@ -200,8 +200,9 @@ void set_rgb_colors_by_layer( uint8_t layer ) {
   set_key_red(85);
 }
 
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
   // set layer color to static
   uint8_t layer = biton32(layer_state);
   set_rgb_colors_by_layer(layer);
+  return true;
 }
