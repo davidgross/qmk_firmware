@@ -73,10 +73,6 @@ void set_key_white( uint8_t key) {
 }
 
 void set_rgb_colors_by_layer( uint8_t layer ) {
-  // for(int i = 0; i <= 8/5; i++) {
-    // set_key_blue(i);
-    // set_key_green(i);
-  // }
   // rgb_matrix_set_color_all(0,0,255); // all blue
   // rgb_matrix_set_color_all(0,255,0); // all green
   rgb_matrix_set_color_all(255,0,0); // all red
