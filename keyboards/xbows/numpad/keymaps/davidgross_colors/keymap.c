@@ -34,13 +34,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [0] = LAYOUT(
     KC_ESC ,  KC_TAB,   KC_BSPC,  MO(1),
-    KC_NLCK,  KC_PSLS,  KC_PAST,  KC_EQL,
+    KC_NUM_LOCK,  KC_PSLS,  KC_PAST,  KC_EQL,
     KC_P7,    KC_P8,    KC_P9,    KC_PMNS,
     KC_P4,    KC_P5,    KC_P6,    KC_PPLS,
     KC_P1,    KC_P2,    KC_P3,    KC_PENT,
          KC_P0,       KC_PDOT),
   [1] = LAYOUT(
-    RESET,     RGB_TOG,   EEP_RST,   KC_TRNS,
+    QK_BOOTLOADER,     RGB_TOG,   QK_CLEAR_EEPROM,   KC_TRNS,
     KC_CALC,   KC_MYCM,   KC_MSEL,   KC_MAIL,
     RGB_MOD,   RGB_VAI,   RGB_HUI,   KC_VOLD,
     RGB_SPD,   RGB_TOG,   RGB_SPI,   KC_VOLU,
@@ -127,8 +127,9 @@ void set_rgb_colors_by_layer( uint8_t layer ) {
 }
 
 
-void rgb_matrix_indicators_user(void) {
+bool rgb_matrix_indicators_user(void) {
   // set layer color to static
   uint8_t layer = biton32(layer_state);
   set_rgb_colors_by_layer(layer);
+  return true;
 }
